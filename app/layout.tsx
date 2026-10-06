@@ -1,0 +1,4 @@
+import type {Metadata,Viewport} from "next";import Script from "next/script";import "./globals.css";import Header from "@/components/Header";import Footer from "@/components/Footer";import TelegramBridge from "@/components/TelegramBridge";
+export const metadata:Metadata={metadataBase:process.env.NEXT_PUBLIC_SITE_URL?new URL(process.env.NEXT_PUBLIC_SITE_URL):undefined,title:"Addis Market — Local products. Real people. Simple buying.",description:"Buy and sell products around Addis Ababa.",icons:{icon:"/brand/logo.jpg"}};
+export const viewport:Viewport={width:"device-width",initialScale:1,themeColor:"#C6283D"};
+export default function R({children}:{children:React.ReactNode}){return <html lang="en"><body><Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive"/><TelegramBridge/><Header/><main>{children}</main><Footer/></body></html>}

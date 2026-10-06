@@ -1,0 +1,2 @@
+export const categories=[{slug:"phones",name:"Phones",a:"Ph"},{slug:"habesha",name:"Habesha Dresses",a:"Hb"},{slug:"electronics",name:"Electronics",a:"El"},{slug:"fashion",name:"Fashion",a:"Fa"},{slug:"home",name:"Home & Furniture",a:"Ho"},{slug:"vehicles",name:"Vehicles",a:"Ve"},{slug:"sports",name:"Sports & Hobbies",a:"Sp"}];
+export const locations=["Bole","Kazanchis","Piassa","Saris","Megenagna","CMC","Gerji","Mexico","Yeka"];

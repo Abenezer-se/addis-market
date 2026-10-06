@@ -1,0 +1,4 @@
+export const areas:Record<string,{lat:number;lon:number}>={
+Bole:{lat:8.995,lon:38.789},Kazanchis:{lat:9.019,lon:38.764},Piassa:{lat:9.035,lon:38.749},Saris:{lat:8.96,lon:38.752},Megenagna:{lat:9.02,lon:38.802},CMC:{lat:9.018,lon:38.83},Gerji:{lat:9.0,lon:38.803},Mexico:{lat:9.012,lon:38.743},Yeka:{lat:9.045,lon:38.805}};
+export const mapSrc=(n:string)=>{const a=areas[n];if(!a)return "https://www.openstreetmap.org/export/embed.html?bbox=38.68,8.95,38.88,9.08&layer=mapnik";const d=0.018;return `https://www.openstreetmap.org/export/embed.html?bbox=${a.lon-d},${a.lat-d*0.7},${a.lon+d},${a.lat+d*0.7}&layer=mapnik&marker=${a.lat},${a.lon}`};
+export const mapLink=(n:string)=>{const a=areas[n];return a?`https://www.openstreetmap.org/?mlat=${a.lat}&mlon=${a.lon}#map=15/${a.lat}/${a.lon}`:"https://www.openstreetmap.org/#map=12/9.03/38.76"};

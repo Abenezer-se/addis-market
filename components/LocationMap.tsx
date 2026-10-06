@@ -1,0 +1,7 @@
+"use client";
+import {useState} from "react";import Link from "next/link";import {areas,mapSrc,mapLink} from "@/data/areas";import {listings} from "@/data/listings";import {PinI} from "./Icons";
+export default function LocationMap({initial="",chips=false}:{initial?:string;chips?:boolean}){const[a,setA]=useState(initial);const n=(x:string)=>listings.filter(l=>l.location===x).length;
+return <div className="mapbox"><div className="mapside">
+{chips&&<><p className="muted" style={{margin:0}}>Pick an area to see it on the map.</p><div className="areas">{Object.keys(areas).map(x=><button key={x} type="button" className={"area"+(a===x?" on":"")} aria-pressed={a===x} onClick={()=>setA(x)}><PinI size={14}/>{x}<span>{n(x)}</span></button>)}</div></>}
+{a&&<div className="mapinfo"><b>{a}, Addis Ababa</b><span className="muted">{n(a)} listing{n(a)===1?"":"s"} in this area</span><div style={{display:"flex",gap:8,flexWrap:"wrap"}}>{n(a)>0&&<Link className="btn p" href={`/listings?loc=${a}`}>See listings</Link>}<a className="btn" target="_blank" rel="noreferrer" href={mapLink(a)}>Open map</a></div></div>}
+</div><iframe className="mapf" title={`Map of ${a||"Addis Ababa"}`} src={mapSrc(a)} loading="lazy"/></div>}

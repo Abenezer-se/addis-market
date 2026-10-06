@@ -1,0 +1,3 @@
+Put photos here: public/listings/<listing-id>/1.jpg, 2.jpg, 3.jpg ...
+<listing-id> is the "id" in data/listings.ts. Update imageCount to the number of photos.
+Missing photos show a placeholder automatically.

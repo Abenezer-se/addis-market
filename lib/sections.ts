@@ -1,0 +1,2 @@
+export const sections=[{id:"home",label:"Home"},{id:"about",label:"About"},{id:"browse",label:"Browse"},{id:"location",label:"Location"},{id:"sell",label:"Sell"}] as const;
+export type SectionId=typeof sections[number]["id"]|"safety";

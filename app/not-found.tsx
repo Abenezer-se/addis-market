@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NF(){return <div className="wrap empty" style={{minHeight:"55vh",justifyContent:"center"}}><img src="/brand/logo.jpg" alt="" width={72}/><h1>Looks like this page moved.</h1><p className="muted">This listing is no longer available, or the link is wrong.</p><div style={{display:"flex",gap:8}}><Link className="btn p" href="/listings">Browse listings</Link><Link className="btn" href="/">Go home</Link></div></div>}
