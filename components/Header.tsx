@@ -2,6 +2,6 @@ import {Suspense} from "react";import Link from "next/link";import Logo from "./
 export default function Header(){return <><header className="hdr"><div className="wrap in"><Logo/>
 <Link href="/favorites" className="hrtm" aria-label="Favorites"><HeartI size={20}/><FavCount/></Link>
 <TgLink className="tgicon" href={getTelegramMiniAppUrl()} label="Open Addis Market in Telegram"><TgIcon size={22}/></TgLink>
-<form className="search" action="/listings" role="search"><span className="si" aria-hidden="true"><SearchI size={18}/></span><input name="q" placeholder="Search phones, furniture, fashion..." aria-label="Search listings"/><button className="sb">Search</button></form>
+<form className="search" action="/products" role="search"><span className="si" aria-hidden="true"><SearchI size={18}/></span><input name="q" placeholder="Search phones, furniture, fashion..." aria-label="Search listings"/><button className="sb">Search</button></form>
 <Suspense fallback={null}><DesktopNav/></Suspense></div></header>
 <Suspense fallback={null}><BottomNav/></Suspense></>}
