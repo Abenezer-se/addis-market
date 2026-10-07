@@ -1,8 +1,9 @@
 "use client";
 import {useState,useEffect,useRef} from "react";import ScrollLink from "./ScrollLink";
 const S=[{t:"Find something worth keeping.",p:"Discover useful products from sellers around Addis Ababa.",c:"Explore listings",to:"browse",g:"Just listed",img:"/hero/1.jpg"},{t:"Sell what you no longer need.",p:"Reach people looking for products like yours.",c:"Start selling",to:"sell",g:"For sellers",img:"/hero/2.jpg"},{t:"Good products. Nearby sellers.",p:"Discover products around Bole, Kazanchis, Piassa and more.",c:"Browse nearby",to:"browse",g:"Near you",img:"/hero/3.jpg"}];
-const fb=["linear-gradient(120deg,#171A1F 55%,#7a1a28)","linear-gradient(120deg,#171A1F 55%,#8a5a1e)","linear-gradient(120deg,#171A1F 55%,#1f4a3b)"];
-const shade="linear-gradient(90deg,rgba(23,26,31,.88) 0%,rgba(23,26,31,.55) 55%,rgba(23,26,31,.2) 100%)";
+const fb=["linear-gradient(120deg,#082D34 55%,#14535C)","linear-gradient(120deg,#082D34 55%,#1b6a75)","linear-gradient(120deg,#082D34 55%,#0f4048)"];
+const shade="linear-gradient(90deg,rgba(8,45,52,.9) 0%,rgba(8,45,52,.58) 55%,rgba(8,45,52,.2) 100%)";
+
 export default function Hero(){const[i,setI]=useState(0);const x=useRef(0);const go=(n:number)=>setI((n+S.length)%S.length);
 useEffect(()=>{const m=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;const t=setInterval(()=>setI(v=>(v+1)%S.length),6500);return()=>clearInterval(t)},[]);
 return <div className="slider" role="region" aria-roledescription="carousel" aria-label="Featured" tabIndex={0} onKeyDown={e=>{if(e.key==="ArrowLeft")go(i-1);if(e.key==="ArrowRight")go(i+1)}} onTouchStart={e=>{x.current=e.touches[0].clientX}} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-x.current;if(Math.abs(d)>50)go(i+(d<0?1:-1))}}>
