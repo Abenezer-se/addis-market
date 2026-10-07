@@ -1,6 +1,6 @@
 import type {Listing,Seller} from "@/types";
 const S=(name:string,since:number,telegram:string,verified=true):Seller=>({name,since,telegram,verified});
-const selam=S("Selam Mekonnen",2024,"selam_demo"),tigist=S("Tigist Haile",2023,"tigist_demo"),rahel=S("Rahel Abebe",2025,"rahel_demo",false);
+const selam=S("Selam Mekonnen",2024,"Berzabeh"),tigist=S("Tigist Haile",2023,"Yemaryamelij"),rahel=S("Rahel Abebe",2025,"rahel_demo",false);
 export const habesha:Listing[]=[
 {id:"habesha-kemis-cotton-tilet",title:"Handwoven Habesha Kemis with Tilet Border",price:12000,negotiable:true,currency:"ETB",description:"Handwoven cotton kemis with a woven tilet border on the chest and hem. Soft and light to wear. The netela is included. New, never worn.",category:"habesha",location:"Piassa",address:"Piassa, Churchill Road",imageCount:1,condition:"New",seller:selam,specs:{Material:"Handwoven cotton",Size:"M",Color:"White with gold tilet",Includes:"Kemis and netela"},featured:true,createdAt:"2026-10-05T09:00:00Z"},
 {id:"habesha-kemis-colorful-tibeb",title:"Habesha Kemis with Colorful Tibeb",price:14500,negotiable:true,currency:"ETB",description:"Cotton kemis with a hand-woven colorful tibeb pattern around the neckline and sleeves. Good for holidays and church. Size L, new with the tag still on.",category:"habesha",location:"Bole",address:"Bole, near Atlas",imageCount:1,condition:"New",seller:tigist,specs:{Material:"Cotton",Size:"L",Color:"White with multicolor tibeb"},featured:true,createdAt:"2026-10-05T06:30:00Z"},

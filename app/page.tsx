@@ -1,4 +1,4 @@
-import Link from "next/link";import Hero from "@/components/Hero";import ProductCard from "@/components/ProductCard";import Img from "@/components/Img";import LocationMap from "@/components/LocationMap";import Reveal from "@/components/Reveal";import CountUp from "@/components/CountUp";import TgIcon from "@/components/TgIcon";import {categories} from "@/data/categories";import {listings} from "@/data/listings";import {botUrl} from "@/lib/telegram";
+import Link from "next/link";import Hero from "@/components/Hero";import ProductCard from "@/components/ProductCard";import Img from "@/components/Img";import LocationMap from "@/components/LocationMap";import Reveal from "@/components/Reveal";import CountUp from "@/components/CountUp";import TgIcon from "@/components/TgIcon";import TgLink from "@/components/TgLink";import {categories} from "@/data/categories";import {listings} from "@/data/listings";import {getTelegramBotUrl} from "@/lib/telegram";
 
 const verified=new Set(listings.filter(l=>l.seller.verified).map(l=>l.seller.name)).size;
 const stats=[
@@ -30,7 +30,7 @@ return <div className="wrap">
 
 <section className="s" id="location"><Reveal><div style={{marginBottom:14}}><span className="eyebrow">Location</span><h2>Find products near you</h2><p className="muted" style={{fontSize:15}}>Choose an area to see it on the map and browse what is listed there.</p></div><LocationMap initial="Bole" chips/></Reveal></section>
 
-<section className="s" id="sell"><Reveal><div className="sellbox"><div><span className="eyebrow" style={{color:"var(--gold)"}}>Sell an item</span><h2 style={{color:"#fff"}}>Have something to sell?</h2><p style={{color:"#d8d4cb",maxWidth:460}}>Reach people in your part of Addis Ababa. It takes a few minutes and costs nothing to send us your item.</p><a className="btn tg" href={botUrl} target="_blank" rel="noreferrer"><TgIcon/>Message us on Telegram</a></div>
+<section className="s" id="sell"><Reveal><div className="sellbox"><div><span className="eyebrow" style={{color:"var(--gold)"}}>Sell an item</span><h2 style={{color:"#fff"}}>Have something to sell?</h2><p style={{color:"#d8d4cb",maxWidth:460}}>Reach people in your part of Addis Ababa. It takes a few minutes and costs nothing to send us your item.</p><TgLink className="btn tg" href={getTelegramBotUrl("sell")} label="Message the Addis Market bot on Telegram to sell an item"><TgIcon/>Message us on Telegram</TgLink></div>
 <ol className="steps">{steps.map(s=><li key={s.n}><span>{s.n}</span><div><b>{s.t}</b><p>{s.d}</p></div></li>)}</ol></div></Reveal></section>
 
 <section className="s" id="safety"><Reveal><div style={{marginBottom:14}}><span className="eyebrow">Safety</span><h2>Buy and sell with confidence</h2></div></Reveal>

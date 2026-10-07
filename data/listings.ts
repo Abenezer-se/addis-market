@@ -1,8 +1,9 @@
 import type {Listing,Seller} from "@/types";
 import {habesha} from "./habesha";
 // IMAGES: put files at public/listings/<id>/1.jpg, 2.jpg ... (imageCount = how many you add)
+
 const S=(name:string,since:number,telegram:string,verified=true):Seller=>({name,since,telegram,verified});
-const sam=S("Samuel Bekele",2025,"samuel_demo"),hana=S("Hanna Tesfaye",2024,"hanna_demo"),dawit=S("Dawit Alemu",2025,"dawit_demo",false),meron=S("Meron Girma",2023,"meron_demo");
+const sam=S("Abenezer",2025,"Yemaryamelij"),hana=S("Berzabeh",2024,"Berzabeh"),dawit=S("Dawit Alemu",2025,"Yesma2127",false),meron=S("Meron Girma",2023,"Berzabeh");
 type R=Omit<Listing,"currency">;
 const L=(x:R):Listing=>({currency:"ETB",...x});
 const base:Listing[]=[
