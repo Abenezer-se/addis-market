@@ -1,6 +1,6 @@
 "use client";
 import {useEffect,useMemo,useState} from "react";import {useRouter,usePathname,useSearchParams} from "next/navigation";
-import {listings} from "@/data/listings";import {categories,locations} from "@/data/categories";import ProductCard from "./ProductCard";import SpecDrawer from "./SpecDrawer";import {readFavs} from "./FavButton";
+import {listings} from "@/data/listings";import {categories,activeCategories,locations} from "@/data/categories";import ProductCard from "./ProductCard";import SpecDrawer from "./SpecDrawer";import {readFavs} from "./FavButton";
 export default function Browser({title,showAll=false}:{title?:string;showAll?:boolean}){const sp=useSearchParams(),r=useRouter(),path=usePathname();
 const PAGE=showAll?100000:8;
 const q=sp.get("q")||"",cat=sp.get("cat")||"",loc=sp.get("loc")||"",cond=sp.get("cond")||"",sort=sp.get("sort")||"new",max=Number(sp.get("max"))||0,fav=sp.get("fav")==="1",item=sp.get("item")||"";
@@ -13,7 +13,7 @@ const sel=listings.find(l=>l.id===item);
 const chips=[q&&`“${q}”`,cat&&categories.find(c=>c.slug===cat)?.name,loc,cond,max&&`≤ ETB ${max.toLocaleString()}`,fav&&"Favorites"].filter(Boolean);
 return <><h1 style={{fontSize:28}}>{fav?"Your favorites":(title||"Browse listings")}</h1><p className="muted">{res.length} result{res.length===1?"":"s"}</p>
 <div className="fb" role="search"><input defaultValue={q} key={q} placeholder="Search…" aria-label="Search" onKeyDown={e=>{if(e.key==="Enter")set("q",e.currentTarget.value)}} onBlur={e=>e.currentTarget.value!==q&&set("q",e.currentTarget.value)}/>
-<select aria-label="Category" value={cat} onChange={e=>set("cat",e.target.value)}><option value="">All categories</option>{categories.map(c=><option key={c.slug} value={c.slug}>{c.name}</option>)}</select>
+<select aria-label="Category" value={cat} onChange={e=>set("cat",e.target.value)}><option value="">All categories</option>{activeCategories.map(c=><option key={c.slug} value={c.slug}>{c.name}</option>)}</select>
 <select aria-label="Location" value={loc} onChange={e=>set("loc",e.target.value)}><option value="">All areas</option>{locations.map(l=><option key={l}>{l}</option>)}</select>
 <select aria-label="Condition" value={cond} onChange={e=>set("cond",e.target.value)}><option value="">Any condition</option><option>New</option><option>Used</option></select>
 <select aria-label="Max price" value={max||""} onChange={e=>set("max",e.target.value)}><option value="">Any price</option>{[5000,10000,25000,50000].map(m=><option key={m} value={m}>Up to ETB {m.toLocaleString()}</option>)}</select>

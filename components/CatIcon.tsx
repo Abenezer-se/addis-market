@@ -1,0 +1,3 @@
+import {Smartphone,Shirt,Laptop,ShoppingBag,Armchair,Car,Activity,Tag,type LucideIcon} from "lucide-react";
+const map:Record<string,LucideIcon>={phones:Smartphone,habesha:Shirt,electronics:Laptop,fashion:ShoppingBag,home:Armchair,vehicles:Car,sports:Activity};
+export default function CatIcon({slug,size=19}:{slug:string;size?:number}){const I=map[slug]??Tag;return <I size={size} aria-hidden="true"/>}

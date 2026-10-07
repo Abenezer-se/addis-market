@@ -1,11 +1,12 @@
-import Link from "next/link";import Hero from "@/components/Hero";import ProductCard from "@/components/ProductCard";import Img from "@/components/Img";import LocationMap from "@/components/LocationMap";import Reveal from "@/components/Reveal";import CountUp from "@/components/CountUp";import TgIcon from "@/components/TgIcon";import TgLink from "@/components/TgLink";import {categories} from "@/data/categories";import {listings} from "@/data/listings";import {getTelegramBotUrl} from "@/lib/telegram";
+import Link from "next/link";import Hero from "@/components/Hero";import ProductCard from "@/components/ProductCard";import Img from "@/components/Img";import LocationMap from "@/components/LocationMap";import Reveal from "@/components/Reveal";import CountUp from "@/components/CountUp";import CatIcon from "@/components/CatIcon";import TgIcon from "@/components/TgIcon";import TgLink from "@/components/TgLink";import {activeCategories} from "@/data/categories";import {listings} from "@/data/listings";import {getTelegramBotUrl} from "@/lib/telegram";import {formatListings} from "@/lib/utils";
 
 const verified=new Set(listings.filter(l=>l.seller.verified).map(l=>l.seller.name)).size;
+// Real counts from your data. A metric that is 0 is not shown.
 const stats=[
-{value:listings.length,label:"All Listings"},
-{value:verified,label:"Verified Sellers"},
-{value:categories.filter(c=>listings.some(l=>l.category===c.slug)).length,label:"Active Categories"},
-{value:new Set(listings.map(l=>l.location)).size,label:"Areas in Addis"}];
+{value:listings.length,label:"Listings"},
+{value:verified,label:"Verified sellers"},
+{value:new Set(listings.map(l=>l.location)).size,label:"Areas covered"},
+{value:activeCategories.length,label:"Categories"}].filter(s=>s.value>0);
 const trust=[{t:"Meet in a public place",d:"Choose a busy, well-lit spot such as a cafe or a mall. Bring a friend if you can."},{t:"Check before you pay",d:"Test the item, check the serial number or IMEI, and ask for receipts or a warranty card."},{t:"Keep the chat in one place",d:"Use Telegram to talk to the seller, and never send money before you have seen the item."}];
 const steps=[{n:"1",t:"Send your photos",d:"Take clear photos of the item from a few angles."},{n:"2",t:"Add price and area",d:"Tell us the price in ETB, if it is negotiable, and where you are."},{n:"3",t:"We list it",d:"Your item appears on Addis Market and buyers message you on Telegram."}];
 export default function Home(){
@@ -24,7 +25,7 @@ return <div className="wrap">
 </section>
 
 <section className="s" id="browse"><Reveal><div style={{marginBottom:14}}><span className="eyebrow">Browse</span><h2>Featured products</h2></div>
-<div className="cats" style={{marginBottom:18}}>{categories.map(c=><Link key={c.slug} className="cat" href={`/products?cat=${c.slug}`}><i>{c.a}</i><span>{c.name}<br/><span className="muted">{listings.filter(l=>l.category===c.slug).length} listings</span></span></Link>)}</div></Reveal>
+<div className="cats" style={{marginBottom:18}}>{activeCategories.map(c=><Link key={c.slug} className="cat" href={`/products?cat=${c.slug}`}><CatIcon slug={c.slug}/><span>{c.name}</span><span className="cc">{formatListings(listings.filter(l=>l.category===c.slug).length)}</span></Link>)}</div></Reveal>
 <div className="grid">{picks.map((l,i)=><Reveal key={l.id} delay={(i%4)*90}><ProductCard l={l}/></Reveal>)}</div>
 <Reveal><div style={{textAlign:"center",marginTop:22}}><Link href="/products" className="btn p">See More</Link></div></Reveal></section>
 

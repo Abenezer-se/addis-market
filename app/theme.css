@@ -26,7 +26,6 @@ h1,h2,h3{letter-spacing:-.015em;color:var(--primary)}
 .hdr{background:var(--primary);border-bottom:1px solid transparent;transition:background-color var(--t) ease,border-color var(--t) ease,backdrop-filter var(--t) ease}
 html[data-scrolled="1"] .hdr{background:rgba(8,45,52,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--line-dark)}
 .hdr .logo .a{color:var(--bg)}.hdr .logo .m{color:rgba(241,248,221,.72)}
-.logo img{background:#fff;padding:2px}
 .logo.dk .a{color:var(--bg)}.logo.dk .m{color:rgba(241,248,221,.72)}
 .search input{height:48px;background:#fff;border:1px solid var(--line-2);border-right:0;border-radius:var(--r-md) 0 0 var(--r-md);color:var(--primary);font-family:inherit;font-size:15px;transition:border-color var(--t-fast) ease,box-shadow var(--t-fast) ease}
 .search input::placeholder{color:var(--muted)}
@@ -114,3 +113,54 @@ section.s{margin:48px 0}
 .foot h4{color:var(--bg)}.fl{color:var(--bg)}.fbar{border-top-color:var(--line-dark)}
 .drw{background:var(--bg)}
 .safe{background:var(--surface-alt);color:var(--primary)}
+/* ===== UI/UX refinement pass ===== */
+.dnav a.btn{min-height:44px}
+/* one primary CTA: navbar "Sell an item" and every hero button share this style */
+.dnav a.btn.d,.dnav a.btn.d.act,.slide .btn.p,.slide .hc{height:44px;min-height:44px;padding:0 20px;gap:8px;border-radius:12px;background:var(--bg);border:1px solid var(--bg);color:var(--primary);font-weight:600;font-size:14.5px}
+.dnav a.btn.d:hover,.slide .btn.p:hover{background:var(--primary-hover);border-color:var(--primary-hover);color:var(--bg);transform:translateY(-1px);box-shadow:var(--sh-md)}
+.dnav a.btn.d:active,.slide .btn.p:active{transform:translateY(0);box-shadow:none}
+/* Telegram = secondary */
+.dnav a.btn.tg{background:transparent;border:1px solid rgba(241,248,221,.18);color:rgba(241,248,221,.85);box-shadow:none}
+.dnav a.btn.tg:hover{background:rgba(241,248,221,.10);border-color:rgba(241,248,221,.3);color:var(--bg);transform:none;box-shadow:none}
+.tgicon{background:transparent;border:1px solid rgba(241,248,221,.22);color:var(--bg);transition:background-color var(--t-fast) ease}
+.tgicon:hover{background:rgba(241,248,221,.12)}
+/* favorites count badge (real count) */
+.dnav a.hrt,.hrtm{position:relative}
+.fcount{position:absolute;top:-4px;right:-4px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--bg);color:var(--primary);font-size:10.5px;font-weight:700;line-height:1;display:grid;place-items:center}
+.dnav a.hrt.on .fcount{background:var(--primary);color:var(--bg)}
+/* search: white field, icon inside, button inside */
+.search{position:relative;display:flex;align-items:center}
+.search .si{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-2);display:grid;pointer-events:none}
+.search input{width:100%;height:48px;padding:0 96px 0 42px;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--primary);font-size:15px;box-shadow:none}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{outline:none;border-color:var(--primary-hover);box-shadow:0 0 0 3px rgba(241,248,221,.35)}
+.search .sb{position:absolute;right:6px;top:50%;transform:translateY(-50%);height:36px;padding:0 14px;border:0;border-radius:9px;background:var(--primary);color:var(--bg);font:600 13.5px/1 var(--font-manrope),system-ui,sans-serif;cursor:pointer;transition:background-color var(--t-fast) ease}
+.search .sb:hover{background:var(--primary-hover)}
+/* hero: consistent overlay, readable text, glass arrows */
+.slide::before{content:"";position:absolute;inset:0;background:rgba(8,45,52,.88);pointer-events:none}
+@media(min-width:860px){.slide::before{background:linear-gradient(90deg,rgba(8,45,52,.92) 0%,rgba(8,45,52,.86) 50%,rgba(8,45,52,.35) 100%)}}
+.slide>*{position:relative;z-index:1}
+.slide p{font-size:clamp(15px,1.6vw,17px);line-height:1.6;color:rgba(241,248,221,.75)}
+.tag{background:var(--bg);color:var(--primary)}
+.arr{z-index:2;width:42px;height:42px;padding:0;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:background-color var(--t-fast) ease,transform var(--t-fast) ease}
+.arr:hover{background:rgba(255,255,255,.28);transform:translateY(-50%) scale(1.03)}
+@media(max-width:599px){.arr{display:none}} /* phones swipe; arrows would cover the text */
+/* category chips */
+.cats{display:flex;flex-wrap:wrap;gap:10px}
+.cat{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--primary);font-size:14px;font-weight:600;box-shadow:none;transition:background-color var(--t-fast) ease,color var(--t-fast) ease,border-color var(--t-fast) ease,transform var(--t-fast) ease}
+.cat svg{flex:none}
+.cc{font-size:12.5px;font-weight:500;color:var(--text-2);transition:color var(--t-fast) ease}
+.cat:hover{background:var(--primary);border-color:var(--primary);color:var(--bg);transform:translateY(-1px);box-shadow:none}
+.cat:hover .cc{color:rgba(241,248,221,.72)}
+/* understated stats */
+.abs b{font-size:clamp(26px,5vw,32px);font-weight:700;color:var(--primary);letter-spacing:-.01em}
+.abs b em{color:var(--primary-hover)}
+.abs>span{font-size:13.5px;font-weight:500;color:var(--text-2)}
+@media(hover:hover){.abs:hover b{text-shadow:none;transform:none}}
+.tcard{border-top-color:var(--primary-hover)}
+/* stats: brand-colored numbers with a visible "+" */
+.abs b{font-size:clamp(30px,6vw,40px);font-weight:800;color:var(--primary);letter-spacing:-.02em}
+.abs b em{font-style:normal;font-weight:800;color:var(--primary-hover);margin-left:2px}
+.abs>span{font-size:13.5px;font-weight:600;color:var(--text-2)}
+.abst{border-top:1px solid var(--line-2)}
+.abst::before{background:var(--primary)}

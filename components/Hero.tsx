@@ -1,12 +1,10 @@
 "use client";
-import {useState,useEffect,useRef} from "react";import ScrollLink from "./ScrollLink";
+import {useState,useEffect,useRef} from "react";import ScrollLink from "./ScrollLink";import {PrevI,NextI} from "./Icons";
 const S=[{t:"Find something worth keeping.",p:"Discover useful products from sellers around Addis Ababa.",c:"Explore listings",to:"browse",g:"Just listed",img:"/hero/1.jpg"},{t:"Sell what you no longer need.",p:"Reach people looking for products like yours.",c:"Start selling",to:"sell",g:"For sellers",img:"/hero/2.jpg"},{t:"Good products. Nearby sellers.",p:"Discover products around Bole, Kazanchis, Piassa and more.",c:"Browse nearby",to:"browse",g:"Near you",img:"/hero/3.jpg"}];
 const fb=["linear-gradient(120deg,#082D34 55%,#14535C)","linear-gradient(120deg,#082D34 55%,#1b6a75)","linear-gradient(120deg,#082D34 55%,#0f4048)"];
-const shade="linear-gradient(90deg,rgba(8,45,52,.9) 0%,rgba(8,45,52,.58) 55%,rgba(8,45,52,.2) 100%)";
-
 export default function Hero(){const[i,setI]=useState(0);const x=useRef(0);const go=(n:number)=>setI((n+S.length)%S.length);
 useEffect(()=>{const m=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;const t=setInterval(()=>setI(v=>(v+1)%S.length),6500);return()=>clearInterval(t)},[]);
 return <div className="slider" role="region" aria-roledescription="carousel" aria-label="Featured" tabIndex={0} onKeyDown={e=>{if(e.key==="ArrowLeft")go(i-1);if(e.key==="ArrowRight")go(i+1)}} onTouchStart={e=>{x.current=e.touches[0].clientX}} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-x.current;if(Math.abs(d)>50)go(i+(d<0?1:-1))}}>
-{S.map((s,k)=><div key={k} className={"slide"+(k===i?" on":"")} style={{backgroundImage:`${shade}, url(${s.img}), ${fb[k]}`,backgroundSize:"cover",backgroundPosition:"center"}} aria-hidden={k!==i}><span className="tag">{s.g}</span><h1>{s.t}</h1><p>{s.p}</p><ScrollLink to={s.to} className="btn p hc" tabIndex={k===i?0:-1}>{s.c}</ScrollLink></div>)}
+{S.map((s,k)=><div key={k} className={"slide"+(k===i?" on":"")} style={{backgroundImage:`url(${s.img}), ${fb[k]}`,backgroundSize:"cover",backgroundPosition:"center"}} aria-hidden={k!==i}><span className="tag">{s.g}</span><h1>{s.t}</h1><p>{s.p}</p><ScrollLink to={s.to} className="btn p hc" tabIndex={k===i?0:-1}>{s.c}</ScrollLink></div>)}
 <div className="sc">{S.map((_,k)=><button key={k} className={"dot"+(k===i?" on":"")} aria-label={`Slide ${k+1}`} onClick={()=>setI(k)}/>)}</div>
-<button className="arr" style={{left:10}} aria-label="Previous slide" onClick={()=>go(i-1)}>‹</button><button className="arr" style={{right:10}} aria-label="Next slide" onClick={()=>go(i+1)}>›</button></div>}
+<button className="arr" style={{left:14}} aria-label="Previous slide" onClick={()=>go(i-1)}><PrevI size={22}/></button><button className="arr" style={{right:14}} aria-label="Next slide" onClick={()=>go(i+1)}><NextI size={22}/></button></div>}

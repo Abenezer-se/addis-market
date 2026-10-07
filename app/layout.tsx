@@ -1,6 +1,6 @@
 import type {Metadata,Viewport} from "next";import {Manrope} from "next/font/google";import Script from "next/script";import "./globals.css";import "./theme.css";
 import Header from "@/components/Header";import Footer from "@/components/Footer";import TelegramBridge from "@/components/TelegramBridge";import NavScrollState from "@/components/NavScrollState";
 const manrope=Manrope({subsets:["latin"],variable:"--font-manrope",display:"swap"});
-export const metadata:Metadata={metadataBase:process.env.NEXT_PUBLIC_SITE_URL?new URL(process.env.NEXT_PUBLIC_SITE_URL):undefined,title:"Addis Market — Local products. Real people. Simple buying.",description:"Buy and sell products around Addis Ababa.",icons:{icon:"/brand/logo.jpg"}};
+export const metadata:Metadata={metadataBase:process.env.NEXT_PUBLIC_SITE_URL?new URL(process.env.NEXT_PUBLIC_SITE_URL):undefined,title:"Addis Market — Local products. Real people. Simple buying.",description:"Buy and sell products around Addis Ababa.",icons:{icon:"/brand/logo.svg"}};
 export const viewport:Viewport={width:"device-width",initialScale:1,themeColor:"#082D34"};
 export default function R({children}:{children:React.ReactNode}){return <html lang="en" data-scroll-behavior="smooth" className={manrope.variable}><body><Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive"/><TelegramBridge/><NavScrollState/><Header/><main>{children}</main><Footer/></body></html>}
