@@ -10,7 +10,8 @@ const BOT=process.env.NEXT_PUBLIC_TELEGRAM_BOT_USERNAME||"AddisMarket27_Bot";
 const APP=process.env.NEXT_PUBLIC_TELEGRAM_APP_SHORT_NAME||process.env.NEXT_PUBLIC_TELEGRAM_APP_NAME||"market";
 export const TELEGRAM_CHANNEL_URL=process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL||"";
 
-export const getTelegramBotUrl=(start?:string)=>`https://t.me/${BOT}`+(start?`?start=${encodeURIComponent(start)}`:"");      // bot CHAT
+export const getTelegramBotUrl=(start?:string)=>`https://t.me/${BOT}`+(start?`?start=${encodeURIComponent(start)}`:""); 
+   export const getTelegramContactUrl=()=>{const u=(process.env.NEXT_PUBLIC_TELEGRAM_CONTACT_USERNAME||"").replace(/^@/,"").trim();return u?`https://t.me/${u}`:getTelegramBotUrl()};  // bot CHAT
 export const getTelegramMiniAppUrl=()=>`https://t.me/${BOT}/${APP}`;                                                           // Mini App
 export const getTelegramListingUrl=(id:string)=>`${getTelegramMiniAppUrl()}?startapp=${encodeURIComponent(id)}`;               // Mini App + listing
 export const getTelegramSellerUrl=(username:string)=>`https://t.me/${username.replace(/^@/,"")}`;                              // seller chat
